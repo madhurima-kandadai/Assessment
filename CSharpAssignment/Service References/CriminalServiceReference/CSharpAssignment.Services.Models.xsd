@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CriminalModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AgeRange" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConvictedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Crime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CrimeTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HeightInCms" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxHeight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxWeight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MinHeight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MinWeight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nationality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeightInPounds" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CriminalModel" nillable="true" type="tns:CriminalModel" />
+  <xs:complexType name="ArrayOfCriminalModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CriminalModel" nillable="true" type="tns:CriminalModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCriminalModel" nillable="true" type="tns:ArrayOfCriminalModel" />
+  <xs:complexType name="ArrayOfLocationModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocationModel" nillable="true" type="tns:LocationModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocationModel" nillable="true" type="tns:ArrayOfLocationModel" />
+  <xs:complexType name="LocationModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LocationId" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocationModel" nillable="true" type="tns:LocationModel" />
+  <xs:complexType name="ArrayOfCrimeTypeModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrimeTypeModel" nillable="true" type="tns:CrimeTypeModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrimeTypeModel" nillable="true" type="tns:ArrayOfCrimeTypeModel" />
+  <xs:complexType name="CrimeTypeModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CrimeTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="CrimeTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrimeTypeModel" nillable="true" type="tns:CrimeTypeModel" />
+</xs:schema>

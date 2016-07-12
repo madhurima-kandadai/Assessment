@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<script src="~/Scripts/ProjectScripts/SearchController.js"></script>
+<div ng-controller="SearchController">
+    <div>
+        Enter Search text for Name : <input ng-model="searchName" type="text" />
+    </div>
+    <div>
+        Select Age Range : <select ng-model="ageRange">
+            <option value="">Select</option>
+            <option>0-25</option>
+            <option>26-50</option>
+            <option>51-75</option>
+            <option>76-100</option>
+        </select>
+    </div>
+    <div>
+        Gender : <input type="radio" ng-model="gender" value="male" />Male
+        <input type="radio" ng-model="gender" value="female" />Female
+        <input type="radio" ng-model="gender" value="Others" />Others
+    </div>
+    <div>Height Range: <input type="text" ng-model="minHeight" placeholder="min" /> <span>-</span> <input type="text" ng-model="maxHeight" placeholder="max" /> </div>
+    <div>Weight Range: <input type="text" ng-model="minWeight" placeholder="min" /> <span>-</span> <input type="text" ng-model="maxWeight" placeholder="max" /> </div>
+    <div>Nationality: <input ng-model="nationality" type="text" /></div>
+    <div>
+        Location : <select ng-model="location">
+            <option value="">Select</option>
+            <option ng-repeat="loc in locations" value="{{loc.LocationId}}">{{loc.LocationName}}</option>
+        </select>
+    </div>
+    <div>
+        Crime Type: <select ng-model="crimeType">
+            <option value="">Select</option>
+            <option ng-repeat="crime in crimeTypes" value="{{crime.CrimeTypeId}}">{{crime.CrimeTypeName}}</option>
+        </select>
+    </div>
+    <div>
+        <button ng-model="btnSearch" ng-click="searchCrime()">Search</button>
+    </div>
+</div>
