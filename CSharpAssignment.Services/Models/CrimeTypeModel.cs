@@ -20,11 +20,20 @@ namespace CSharpAssignment.Services.Models
     /// </summary>
     public class CrimeTypeModel
     {
+        /// <summary>
+        /// Gets or sets the crime type identifier.
+        /// </summary>
+        /// <value>
+        /// The crime type identifier.
+        /// </value>
         public int CrimeTypeId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the crime type.
+        /// </summary>
+        /// <value>
+        /// The name of the crime type.
+        /// </value>
         public string CrimeTypeName { get; set; }
     }
 }
-
-
-

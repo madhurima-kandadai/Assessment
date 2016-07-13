@@ -6,7 +6,7 @@ using System.Web;
 namespace CSharpAssignment.Models
 {
     /// <summary>
-    ///     Class Crimial Search View Model
+    /// Class Crimial Search View Model
     /// </summary>
     public class CriminalSearchViewModel
     {

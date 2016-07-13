@@ -8,9 +8,18 @@ using CSharpAssignment.Models;
 
 namespace CSharpAssignment.Controllers
 {
+    /// <summary>
+    ///     Class Home Controller
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// The client
+        /// </summary>
         Service1Client client;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
         public HomeController()
         {
             if (client == null)
@@ -20,11 +29,19 @@ namespace CSharpAssignment.Controllers
             }
         }
 
+        /// <summary>
+        /// Homes the index.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult HomeIndex()
         {
             return this.View();
         }
 
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             if (Request.RequestContext.HttpContext.User.Identity.IsAuthenticated)
@@ -37,6 +54,10 @@ namespace CSharpAssignment.Controllers
             }
         }
 
+        /// <summary>
+        /// Abouts this instance.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -44,6 +65,10 @@ namespace CSharpAssignment.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Contacts this instance.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -51,18 +76,31 @@ namespace CSharpAssignment.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Gets the crime types.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetCrimeTypes()
         {
             var list = client.GetCrimeTypes();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Gets the locations.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetLocations()
         {
             var list = client.GetLocations();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Gets the criminal search details.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
         public ActionResult GetCriminalSearchDetails(CriminalSearchViewModel model)
         {
             var serviceModel = new CriminalModel

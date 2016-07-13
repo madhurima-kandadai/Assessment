@@ -14,20 +14,32 @@ namespace CSharpAssignment.Services
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     /// <summary>
-    ///     Class Service 1
+    /// Class Service 1
     /// </summary>
     public class Service1 : IService1
     {
+        /// <summary>
+        /// The host
+        /// </summary>
         private string host;
+        /// <summary>
+        /// The port
+        /// </summary>
         private string port;
+        /// <summary>
+        /// The sender email identifier
+        /// </summary>
         private string senderEmailId;
+        /// <summary>
+        /// The password
+        /// </summary>
         private string password;
         /// <summary>
         /// The model context
         /// </summary>
         private EntityModel modelContext;
         /// <summary>
-        /// Initializes a new instance of the <see cref="Service1"/> class.
+        /// Initializes a new instance of the <see cref="Service1" /> class.
         /// </summary>
         public Service1()
         {
@@ -157,6 +169,7 @@ namespace CSharpAssignment.Services
         /// Sends the email with PDF.
         /// </summary>
         /// <param name="criminalModelList">The criminal model list.</param>
+        /// <param name="receiverId">The receiver identifier.</param>
         private void SendEmailWithPdf(List<CriminalModel> criminalModelList, string receiverId)
         {
             var list = new List<List<CriminalModel>>();
