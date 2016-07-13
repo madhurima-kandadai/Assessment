@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CSharpAssignment.CriminalServiceReference;
+using CSharpAssignment.ServiceReference1;
 using CSharpAssignment.Models;
 
 namespace CSharpAssignment.Controllers
@@ -16,7 +16,7 @@ namespace CSharpAssignment.Controllers
         /// <summary>
         /// The client
         /// </summary>
-        Service1Client client;
+         Service1Client client;
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>

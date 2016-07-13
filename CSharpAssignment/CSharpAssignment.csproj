@@ -180,7 +180,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\CriminalServiceReference\Reference.cs">
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -217,21 +217,18 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\CriminalServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\CriminalServiceReference\configuration.svcinfo" />
-    <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.CrimeTypeModel.datasource">
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <Content Include="Service References\ServiceReference1\CSharpAssignment.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.LocationModel.datasource">
+    <Content Include="Service References\ServiceReference1\CSharpAssignment.ServiceReference1.CrimeTypeModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.CompositeType.datasource">
+    <Content Include="Service References\ServiceReference1\CSharpAssignment.ServiceReference1.LocationModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\CriminalServiceReference\CSharpAssignment.Services.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\Reference.svcmap">
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -269,17 +266,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <None Include="Service References\CriminalServiceReference\CSharpAssignment.Services.Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\service.wsdl" />
-    <None Include="Service References\CriminalServiceReference\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Home\HomeIndex.cshtml" />
+    <None Include="Service References\ServiceReference1\CSharpAssignment.Services.Models.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\CSharpAssignment.Services.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\service.wsdl" />
+    <None Include="Service References\ServiceReference1\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,7 +296,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\CriminalServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

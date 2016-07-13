@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSharpAssignment.CriminalServiceReference {
+namespace CSharpAssignment.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -498,26 +498,26 @@ namespace CSharpAssignment.CriminalServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CriminalServiceReference.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCriminalSearchDetails", ReplyAction="http://tempuri.org/IService1/GetCriminalSearchDetailsResponse")]
-        int GetCriminalSearchDetails(CSharpAssignment.CriminalServiceReference.CriminalModel model);
+        int GetCriminalSearchDetails(CSharpAssignment.ServiceReference1.CriminalModel model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCriminalSearchDetails", ReplyAction="http://tempuri.org/IService1/GetCriminalSearchDetailsResponse")]
-        System.Threading.Tasks.Task<int> GetCriminalSearchDetailsAsync(CSharpAssignment.CriminalServiceReference.CriminalModel model);
+        System.Threading.Tasks.Task<int> GetCriminalSearchDetailsAsync(CSharpAssignment.ServiceReference1.CriminalModel model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLocations", ReplyAction="http://tempuri.org/IService1/GetLocationsResponse")]
-        CSharpAssignment.CriminalServiceReference.LocationModel[] GetLocations();
+        CSharpAssignment.ServiceReference1.LocationModel[] GetLocations();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLocations", ReplyAction="http://tempuri.org/IService1/GetLocationsResponse")]
-        System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.LocationModel[]> GetLocationsAsync();
+        System.Threading.Tasks.Task<CSharpAssignment.ServiceReference1.LocationModel[]> GetLocationsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCrimeTypes", ReplyAction="http://tempuri.org/IService1/GetCrimeTypesResponse")]
-        CSharpAssignment.CriminalServiceReference.CrimeTypeModel[] GetCrimeTypes();
+        CSharpAssignment.ServiceReference1.CrimeTypeModel[] GetCrimeTypes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCrimeTypes", ReplyAction="http://tempuri.org/IService1/GetCrimeTypesResponse")]
-        System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.CrimeTypeModel[]> GetCrimeTypesAsync();
+        System.Threading.Tasks.Task<CSharpAssignment.ServiceReference1.CrimeTypeModel[]> GetCrimeTypesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
@@ -526,19 +526,19 @@ namespace CSharpAssignment.CriminalServiceReference {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        CSharpAssignment.CriminalServiceReference.CompositeType GetDataUsingDataContract(CSharpAssignment.CriminalServiceReference.CompositeType composite);
+        CSharpAssignment.ServiceReference1.CompositeType GetDataUsingDataContract(CSharpAssignment.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.CompositeType> GetDataUsingDataContractAsync(CSharpAssignment.CriminalServiceReference.CompositeType composite);
+        System.Threading.Tasks.Task<CSharpAssignment.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(CSharpAssignment.ServiceReference1.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : CSharpAssignment.CriminalServiceReference.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : CSharpAssignment.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<CSharpAssignment.CriminalServiceReference.IService1>, CSharpAssignment.CriminalServiceReference.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<CSharpAssignment.ServiceReference1.IService1>, CSharpAssignment.ServiceReference1.IService1 {
         
         public Service1Client() {
         }
@@ -559,27 +559,27 @@ namespace CSharpAssignment.CriminalServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public int GetCriminalSearchDetails(CSharpAssignment.CriminalServiceReference.CriminalModel model) {
+        public int GetCriminalSearchDetails(CSharpAssignment.ServiceReference1.CriminalModel model) {
             return base.Channel.GetCriminalSearchDetails(model);
         }
         
-        public System.Threading.Tasks.Task<int> GetCriminalSearchDetailsAsync(CSharpAssignment.CriminalServiceReference.CriminalModel model) {
+        public System.Threading.Tasks.Task<int> GetCriminalSearchDetailsAsync(CSharpAssignment.ServiceReference1.CriminalModel model) {
             return base.Channel.GetCriminalSearchDetailsAsync(model);
         }
         
-        public CSharpAssignment.CriminalServiceReference.LocationModel[] GetLocations() {
+        public CSharpAssignment.ServiceReference1.LocationModel[] GetLocations() {
             return base.Channel.GetLocations();
         }
         
-        public System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.LocationModel[]> GetLocationsAsync() {
+        public System.Threading.Tasks.Task<CSharpAssignment.ServiceReference1.LocationModel[]> GetLocationsAsync() {
             return base.Channel.GetLocationsAsync();
         }
         
-        public CSharpAssignment.CriminalServiceReference.CrimeTypeModel[] GetCrimeTypes() {
+        public CSharpAssignment.ServiceReference1.CrimeTypeModel[] GetCrimeTypes() {
             return base.Channel.GetCrimeTypes();
         }
         
-        public System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.CrimeTypeModel[]> GetCrimeTypesAsync() {
+        public System.Threading.Tasks.Task<CSharpAssignment.ServiceReference1.CrimeTypeModel[]> GetCrimeTypesAsync() {
             return base.Channel.GetCrimeTypesAsync();
         }
         
@@ -591,11 +591,11 @@ namespace CSharpAssignment.CriminalServiceReference {
             return base.Channel.GetDataAsync(value);
         }
         
-        public CSharpAssignment.CriminalServiceReference.CompositeType GetDataUsingDataContract(CSharpAssignment.CriminalServiceReference.CompositeType composite) {
+        public CSharpAssignment.ServiceReference1.CompositeType GetDataUsingDataContract(CSharpAssignment.ServiceReference1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.CompositeType> GetDataUsingDataContractAsync(CSharpAssignment.CriminalServiceReference.CompositeType composite) {
+        public System.Threading.Tasks.Task<CSharpAssignment.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(CSharpAssignment.ServiceReference1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }
