@@ -122,5 +122,7 @@ namespace CSharpAssignment.Services.Models
         /// The age range.
         /// </value>
         public string AgeRange { get; set; }
+
+        public string InPrison { get; set; }
     }
 }

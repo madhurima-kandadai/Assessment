@@ -12,7 +12,7 @@
   <xs:element name="GetCriminalSearchDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" minOccurs="0" name="GetCriminalSearchDetailsResult" nillable="true" type="q2:ArrayOfCriminalModel" />
+        <xs:element minOccurs="0" name="GetCriminalSearchDetailsResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,7 +24,7 @@
   <xs:element name="GetLocationsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" minOccurs="0" name="GetLocationsResult" nillable="true" type="q3:ArrayOfLocationModel" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" minOccurs="0" name="GetLocationsResult" nillable="true" type="q2:ArrayOfLocationModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -36,7 +36,7 @@
   <xs:element name="GetCrimeTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" minOccurs="0" name="GetCrimeTypesResult" nillable="true" type="q4:ArrayOfCrimeTypeModel" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services.Models" minOccurs="0" name="GetCrimeTypesResult" nillable="true" type="q3:ArrayOfCrimeTypeModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -57,14 +57,14 @@
   <xs:element name="GetDataUsingDataContract">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services" minOccurs="0" name="composite" nillable="true" type="q5:CompositeType" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services" minOccurs="0" name="composite" nillable="true" type="q4:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetDataUsingDataContractResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q6:CompositeType" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CSharpAssignment.Services" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q5:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

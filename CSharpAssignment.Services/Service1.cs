@@ -1,22 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+using System.Net;
+using System.Net.Mail;
+using System.Threading;
 using CSharpAssignment.Services.Entities;
 using CSharpAssignment.Services.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace CSharpAssignment.Services
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    /// <summary>
+    ///     Class Service 1
+    /// </summary>
     public class Service1 : IService1
     {
+        /// <summary>
+        /// The model context
+        /// </summary>
         private EntityModel modelContext;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Service1"/> class.
+        /// </summary>
         public Service1()
         {
             modelContext = new EntityModel();
         }
+        /// <summary>
+        /// Gets the crime types.
+        /// </summary>
+        /// <returns></returns>
         public List<CrimeTypeModel> GetCrimeTypes()
         {
             var list = modelContext.CrimeTypes.AsQueryable().ToList();
@@ -29,6 +45,10 @@ namespace CSharpAssignment.Services
             return crimeTypeList;
         }
 
+        /// <summary>
+        /// Gets the locations.
+        /// </summary>
+        /// <returns></returns>
         public List<LocationModel> GetLocations()
         {
             var list = modelContext.Locations.AsQueryable().ToList();
@@ -41,7 +61,12 @@ namespace CSharpAssignment.Services
             return locationList;
         }
 
-        public List<CriminalModel> GetCriminalSearchDetails(CriminalModel model)
+        /// <summary>
+        /// Gets the criminal search details.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        public int GetCriminalSearchDetails(CriminalModel model)
         {
             var criminals = modelContext.MD_Criminals.AsQueryable();
             var crimeTypes = modelContext.CrimeTypes.AsQueryable();
@@ -62,7 +87,8 @@ namespace CSharpAssignment.Services
                                Gender = criminal.Gender,
                                Nationality = criminal.Nationality,
                                WeightInPounds = criminal.Weight,
-                               CrimeTypeId = crimeType.Id
+                               CrimeTypeId = crimeType.Id,
+                               InPrison = criminal.InPrison == true ? "Yes" : "No"
                            } );
             if (!string.IsNullOrEmpty(model.Name))
             {
@@ -85,22 +111,22 @@ namespace CSharpAssignment.Services
                 result = result.Where(x => x.Age >= age[0] && x.Age <= age[1]);
             }
 
-            if (model.MinHeight != 0)
+            if (model.MinHeight != 0 && model.MinHeight != null)
             {
                 result = result.Where(x => x.HeightInCms >= model.MinHeight);
             }
 
-            if (model.MaxHeight != 0)
+            if (model.MaxHeight != 0 && model.MaxHeight != null)
             {
                 result = result.Where(x => x.HeightInCms <= model.MaxHeight);
             }
 
-            if (model.MinWeight != 0)
+            if (model.MinWeight != 0 && model.MinWeight != null)
             {
                 result = result.Where(x => x.WeightInPounds >= model.MinWeight);
             }
 
-            if (model.MaxWeight != 0)
+            if (model.MaxWeight != 0 && model.MaxWeight != null)
             {
                 result = result.Where(x => x.WeightInPounds >= model.MaxWeight);
             }
@@ -114,15 +140,78 @@ namespace CSharpAssignment.Services
             {
                 result = result.Where(x => x.CrimeTypeId == model.CrimeTypeId);
             }
-
-            return result.ToList();
+            if (result.Any())
+            {
+                var list = result.ToList();
+                var thread = new Thread(delegate () { SendEmailWithPdf(list); });
+                thread.Start();
+            }
+            return result.Count();
         }
 
+        /// <summary>
+        /// Sends the email with PDF.
+        /// </summary>
+        /// <param name="criminalModelList">The criminal model list.</param>
+        private void SendEmailWithPdf(List<CriminalModel> criminalModelList)
+        {
+            var list = new List<List<CriminalModel>>();
+
+            for (int i = 0; i < criminalModelList.Count; i += 10)
+            {
+                list.Add(criminalModelList.GetRange(i, Math.Min(10, criminalModelList.Count - i)));
+            }
+            foreach (var listObject in list)
+            {
+                MailMessage mm = new MailMessage("Madhurima_Kandadai@epam.com", "Madhurima_Kandadai@epam.com");
+                foreach (var item in listObject)
+                {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
+                        pdfDoc.Open();
+                        pdfDoc.Add(new Paragraph(" Criminal Details: "));
+
+                        pdfDoc.AddCreationDate();
+                        pdfDoc.Close();
+                        byte[] bytes = memoryStream.ToArray();
+                        memoryStream.Close();
+                        mm.Attachments.Add(new Attachment(new MemoryStream(bytes), item.Name + ".pdf"));
+                    }
+                }
+                mm.Subject = "iTextSharp PDF";
+                mm.Body = "iTextSharp PDF Attachment";
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "owabud.epam.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential();
+                NetworkCred.UserName = "Madhurima_Kandadai@epam.com";
+                NetworkCred.Password = "Epam@0616";
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                //  smtp.Send(mm);
+            }
+        }
+
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
 
+        /// <summary>
+        /// Gets the data using data contract.
+        /// </summary>
+        /// <param name="composite">The composite.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">composite</exception>
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)

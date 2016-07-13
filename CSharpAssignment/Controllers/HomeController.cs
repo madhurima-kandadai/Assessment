@@ -17,7 +17,7 @@ namespace CSharpAssignment.Controllers
             {
                 client = new Service1Client();
                 client.Open();
-            }                        
+            }
         }
         public ActionResult Index()
         {
@@ -50,7 +50,7 @@ namespace CSharpAssignment.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public List<CriminalModel> GetCriminalSearchDetails(CriminalSearchViewModel model)
+        public ActionResult GetCriminalSearchDetails(CriminalSearchViewModel model)
         {
             var serviceModel = new CriminalModel
             {
@@ -65,8 +65,12 @@ namespace CSharpAssignment.Controllers
                 Location = model.Location,
                 Nationality = model.Nationality
             };
-            var list = client.GetCriminalSearchDetails(serviceModel).ToList();
-            return list;
+            var count = client.GetCriminalSearchDetails(serviceModel);
+            if (count > 0)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -26,7 +26,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="5ef6b44d-0f6a-43ed-b5e7-c417b0d6e3ee" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CSharpAssignment.Services/Service1/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c80502eb-a1f5-4292-adb1-4d35f068aae0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CSharpAssignment.Services/Service1/mex" />
     <MetadataFile FileName="CSharpAssignment.Services.Models.xsd" MetadataType="Schema" ID="1053a84c-2c9a-4552-80f5-7258361482f8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CSharpAssignment.Services/Service1/mex" />
-    <MetadataFile FileName="CSharpAssignment.Services.xsd" MetadataType="Schema" ID="41753bf3-fec0-47f4-8629-bac6d581e9a6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CSharpAssignment.Services/Service1/mex" />
+    <MetadataFile FileName="CSharpAssignment.Services.xsd" MetadataType="Schema" ID="41fe427a-04ff-4aa0-85af-e7d07a631082" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CSharpAssignment.Services/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

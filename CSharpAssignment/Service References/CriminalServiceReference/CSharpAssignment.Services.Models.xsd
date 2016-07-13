@@ -9,6 +9,7 @@
       <xs:element minOccurs="0" name="CrimeTypeId" type="xs:int" />
       <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HeightInCms" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InPrison" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MaxHeight" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MaxWeight" nillable="true" type="xs:int" />
@@ -20,12 +21,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CriminalModel" nillable="true" type="tns:CriminalModel" />
-  <xs:complexType name="ArrayOfCriminalModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="CriminalModel" nillable="true" type="tns:CriminalModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCriminalModel" nillable="true" type="tns:ArrayOfCriminalModel" />
   <xs:complexType name="ArrayOfLocationModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="LocationModel" nillable="true" type="tns:LocationModel" />

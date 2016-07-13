@@ -219,18 +219,18 @@
     <Content Include="Scripts\_references.js" />
     <None Include="Service References\CriminalServiceReference\configuration91.svcinfo" />
     <None Include="Service References\CriminalServiceReference\configuration.svcinfo" />
-    <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.CriminalModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.CrimeTypeModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.LocationModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\CriminalServiceReference\CSharpAssignment.CriminalServiceReference.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\CriminalServiceReference\CSharpAssignment.Services.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\CriminalServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -270,9 +270,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Service References\CriminalServiceReference\CSharpAssignment.Services.Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\CSharpAssignment.Services.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\CriminalServiceReference\service.wsdl" />

@@ -44,6 +44,9 @@ namespace CSharpAssignment.CriminalServiceReference {
         private System.Nullable<int> HeightInCmsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InPrisonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -164,6 +167,19 @@ namespace CSharpAssignment.CriminalServiceReference {
                 if ((this.HeightInCmsField.Equals(value) != true)) {
                     this.HeightInCmsField = value;
                     this.RaisePropertyChanged("HeightInCms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InPrison {
+            get {
+                return this.InPrisonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InPrisonField, value) != true)) {
+                    this.InPrisonField = value;
+                    this.RaisePropertyChanged("InPrison");
                 }
             }
         }
@@ -470,10 +486,10 @@ namespace CSharpAssignment.CriminalServiceReference {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCriminalSearchDetails", ReplyAction="http://tempuri.org/IService1/GetCriminalSearchDetailsResponse")]
-        CSharpAssignment.CriminalServiceReference.CriminalModel[] GetCriminalSearchDetails(CSharpAssignment.CriminalServiceReference.CriminalModel model);
+        int GetCriminalSearchDetails(CSharpAssignment.CriminalServiceReference.CriminalModel model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCriminalSearchDetails", ReplyAction="http://tempuri.org/IService1/GetCriminalSearchDetailsResponse")]
-        System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.CriminalModel[]> GetCriminalSearchDetailsAsync(CSharpAssignment.CriminalServiceReference.CriminalModel model);
+        System.Threading.Tasks.Task<int> GetCriminalSearchDetailsAsync(CSharpAssignment.CriminalServiceReference.CriminalModel model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLocations", ReplyAction="http://tempuri.org/IService1/GetLocationsResponse")]
         CSharpAssignment.CriminalServiceReference.LocationModel[] GetLocations();
@@ -527,11 +543,11 @@ namespace CSharpAssignment.CriminalServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public CSharpAssignment.CriminalServiceReference.CriminalModel[] GetCriminalSearchDetails(CSharpAssignment.CriminalServiceReference.CriminalModel model) {
+        public int GetCriminalSearchDetails(CSharpAssignment.CriminalServiceReference.CriminalModel model) {
             return base.Channel.GetCriminalSearchDetails(model);
         }
         
-        public System.Threading.Tasks.Task<CSharpAssignment.CriminalServiceReference.CriminalModel[]> GetCriminalSearchDetailsAsync(CSharpAssignment.CriminalServiceReference.CriminalModel model) {
+        public System.Threading.Tasks.Task<int> GetCriminalSearchDetailsAsync(CSharpAssignment.CriminalServiceReference.CriminalModel model) {
             return base.Channel.GetCriminalSearchDetailsAsync(model);
         }
         
