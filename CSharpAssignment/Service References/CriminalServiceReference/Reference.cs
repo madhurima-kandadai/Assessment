@@ -38,6 +38,9 @@ namespace CSharpAssignment.CriminalServiceReference {
         private int CrimeTypeIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string GenderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -141,6 +144,19 @@ namespace CSharpAssignment.CriminalServiceReference {
                 if ((this.CrimeTypeIdField.Equals(value) != true)) {
                     this.CrimeTypeIdField = value;
                     this.RaisePropertyChanged("CrimeTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmailId {
+            get {
+                return this.EmailIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailIdField, value) != true)) {
+                    this.EmailIdField = value;
+                    this.RaisePropertyChanged("EmailId");
                 }
             }
         }

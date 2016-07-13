@@ -18,6 +18,10 @@ namespace CSharpAssignment.Services
     /// </summary>
     public class Service1 : IService1
     {
+        private string host;
+        private string port;
+        private string senderEmailId;
+        private string password;
         /// <summary>
         /// The model context
         /// </summary>
@@ -143,7 +147,7 @@ namespace CSharpAssignment.Services
             if (result.Any())
             {
                 var list = result.ToList();
-                var thread = new Thread(delegate () { SendEmailWithPdf(list); });
+                var thread = new Thread(delegate () { SendEmailWithPdf(list, model.EmailId); });
                 thread.Start();
             }
             return result.Count();
@@ -153,7 +157,7 @@ namespace CSharpAssignment.Services
         /// Sends the email with PDF.
         /// </summary>
         /// <param name="criminalModelList">The criminal model list.</param>
-        private void SendEmailWithPdf(List<CriminalModel> criminalModelList)
+        private void SendEmailWithPdf(List<CriminalModel> criminalModelList, string receiverId)
         {
             var list = new List<List<CriminalModel>>();
 
@@ -163,26 +167,33 @@ namespace CSharpAssignment.Services
             }
             foreach (var listObject in list)
             {
-                MailMessage mm = new MailMessage("Madhurima_Kandadai@epam.com", "Madhurima_Kandadai@epam.com");
+                MailMessage mailMessage = new MailMessage("Madhurima_Kandadai@epam.com", receiverId);
                 foreach (var item in listObject)
                 {
                     using (MemoryStream memoryStream = new MemoryStream())
                     {
-                        Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                        Document pdfDoc = new Document(PageSize.A3, 10f, 10f, 10f, 0f);
                         PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
                         pdfDoc.Open();
-                        pdfDoc.Add(new Paragraph(" Criminal Details: "));
-
+                        pdfDoc.Add(new Paragraph("Criminal Details of " + item.Name + "\n"));
+                        pdfDoc.Add(new Paragraph("Gender : " + item.Gender + "\n"));
+                        pdfDoc.Add(new Paragraph("Age : " + item.Age + "\n"));
+                        pdfDoc.Add(new Paragraph("Convicted On : " + item.ConvictedOn + "\n"));
+                        pdfDoc.Add(new Paragraph("Crime : " + item.Crime + "\n"));
+                        pdfDoc.Add(new Paragraph("Height (In Cms) : " + item.HeightInCms + "\n"));
+                        pdfDoc.Add(new Paragraph("Weight (In Pounds) : " + item.WeightInPounds + "\n"));
+                        pdfDoc.Add(new Paragraph("Nationality : " + item.Nationality + "\n"));
+                        pdfDoc.Add(new Paragraph("In Prison : " + item.InPrison + "\n"));
                         pdfDoc.AddCreationDate();
                         pdfDoc.Close();
                         byte[] bytes = memoryStream.ToArray();
                         memoryStream.Close();
-                        mm.Attachments.Add(new Attachment(new MemoryStream(bytes), item.Name + ".pdf"));
+                        mailMessage.Attachments.Add(new Attachment(new MemoryStream(bytes), item.Name + ".pdf"));
                     }
                 }
-                mm.Subject = "iTextSharp PDF";
-                mm.Body = "iTextSharp PDF Attachment";
-                mm.IsBodyHtml = true;
+                mailMessage.Subject = "Criminal Details";
+                mailMessage.Body = "Hi," + Environment.NewLine + " Attached are the details of Criminals depending on your search";
+                mailMessage.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "owabud.epam.com";
                 smtp.EnableSsl = true;
@@ -192,7 +203,7 @@ namespace CSharpAssignment.Services
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;
-                //  smtp.Send(mm);
+                smtp.Send(mailMessage);
             }
         }
 

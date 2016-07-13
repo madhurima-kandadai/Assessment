@@ -124,5 +124,7 @@ namespace CSharpAssignment.Services.Models
         public string AgeRange { get; set; }
 
         public string InPrison { get; set; }
+
+        public string EmailId { get; set; }
     }
 }

@@ -19,9 +19,22 @@ namespace CSharpAssignment.Controllers
                 client.Open();
             }
         }
+
+        public ActionResult HomeIndex()
+        {
+            return this.View();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            if (Request.RequestContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return this.View();
+            }
+            else
+            {                
+                return this.RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult About()
@@ -63,7 +76,8 @@ namespace CSharpAssignment.Controllers
                 MaxWeight = model.MaxWeight,
                 CrimeTypeId = model.Crime,
                 Location = model.Location,
-                Nationality = model.Nationality
+                Nationality = model.Nationality,
+                EmailId = Request.RequestContext.HttpContext.User.Identity.Name
             };
             var count = client.GetCriminalSearchDetails(serviceModel);
             if (count > 0)
