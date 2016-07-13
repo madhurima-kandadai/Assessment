@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,19 +22,19 @@ namespace CSharpAssignment.Services
         /// <summary>
         /// The host
         /// </summary>
-        private string host;
+        private string host = ConfigurationManager.AppSettings["Host"].ToString();
         /// <summary>
         /// The port
         /// </summary>
-        private string port;
+        private string port = ConfigurationManager.AppSettings["Port"].ToString();
         /// <summary>
         /// The sender email identifier
         /// </summary>
-        private string senderEmailId;
+        private string senderEmailId = ConfigurationManager.AppSettings["MailId"].ToString();
         /// <summary>
         /// The password
         /// </summary>
-        private string password;
+        private string password = ConfigurationManager.AppSettings["Password"].ToString();
         /// <summary>
         /// The model context
         /// </summary>
@@ -180,7 +181,7 @@ namespace CSharpAssignment.Services
             }
             foreach (var listObject in list)
             {
-                MailMessage mailMessage = new MailMessage("Madhurima_Kandadai@epam.com", receiverId);
+                MailMessage mailMessage = new MailMessage(senderEmailId, receiverId);
                 foreach (var item in listObject)
                 {
                     using (MemoryStream memoryStream = new MemoryStream())
@@ -208,14 +209,14 @@ namespace CSharpAssignment.Services
                 mailMessage.Body = "Hi," + Environment.NewLine + " Attached are the details of Criminals depending on your search";
                 mailMessage.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "owabud.epam.com";
+                smtp.Host = host;
                 smtp.EnableSsl = true;
                 NetworkCredential NetworkCred = new NetworkCredential();
-                NetworkCred.UserName = "Madhurima_Kandadai@epam.com";
-                NetworkCred.Password = "Epam@0616";
+                NetworkCred.UserName = senderEmailId;
+                NetworkCred.Password = password;
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
-                smtp.Port = 587;
+                smtp.Port = Convert.ToInt32(port) ;
                 smtp.Send(mailMessage);
             }
         }

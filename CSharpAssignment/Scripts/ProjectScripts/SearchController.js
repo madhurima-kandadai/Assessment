@@ -18,8 +18,12 @@
             url: '/home/GetCriminalSearchDetails',
             params: data
         }).success(function (response) {
-            debugger;
-
+            if (response === true) {
+                alert('The results will be sent to your registered mail Id');
+            }
+            else {
+                alert('No results are retrieved. Please try with different search criteria');
+            }
         }).error(function (response) { });
     };
 
@@ -38,7 +42,23 @@
             url: '/home/GetCrimeTypes'
         }).success(function (response) {
             $scope.crimeTypes = response;
-        }).error(function (response) { });
+            $scope.Reset();
+        }).error(function (response) {
+            $scope.Reset();
+        });
+    };
+
+    $scope.Reset = function () {
+        $scope.ageRange = '';
+        $scope.searchName = '';
+        $scope.gender = '';
+        $scope.minHeight = '';
+        $scope.maxHeight = '';
+        $scope.minWeight = '';
+        $scope.maxWeight = '';
+        $scope.nationality = '';
+        $scope.location = '';
+        $scope.crimeType = '';
     };
 
     $scope.GetLocations();

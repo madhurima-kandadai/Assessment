@@ -9,7 +9,7 @@
         <table cellpadding="5" cellspacing="6" style="width:50%">
             <tr>
                 <td align="right">Name :</td>
-                <td><input class="form-control" ng-model="searchName" type="text" /></td>
+                <td><input placeholder="Part of Name" class="form-control" ng-model="searchName" type="text" /></td>
             </tr>
             <tr>
                 <td align="right">Age :</td>
@@ -52,7 +52,7 @@
             <tr>
                 <td align="right">Nationality :</td>
                 <td>
-                    <input class="form-control" ng-model="nationality" type="text" />
+                    <input placeholder="US/Canada" class="form-control" ng-model="nationality" type="text" />
                 </td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><button class="btn btn-primary" ng-model="btnSearch" ng-click="searchCrime()">Search</button></td>
+                <td colspan="2" align="center"><button ng-disabled="" class="btn btn-primary" ng-model="btnSearch" ng-click="searchCrime()">Search</button></td>
             </tr>
         </table>
     </div>
