@@ -119,13 +119,15 @@ namespace CSharpAssignment.Services
 
             if (!string.IsNullOrEmpty(model.Nationality))
             {
-                result = result.Where(x => x.Gender.ToLower().Contains(model.Gender.ToLower()));
+                result = result.Where(x => x.Nationality.ToLower().Contains(model.Nationality.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(model.AgeRange))
             {
-                var age = model.AgeRange.Split('-').Cast<int>().ToList();
-                result = result.Where(x => x.Age >= age[0] && x.Age <= age[1]);
+                var age = model.AgeRange.Split('-').ToList();
+                int minAge = Convert.ToInt32(age[0]);
+                int maxAge = Convert.ToInt32(age[1]);
+                result = result.Where(x => x.Age >= minAge && x.Age <= maxAge);
             }
 
             if (model.MinHeight != 0 && model.MinHeight != null)
@@ -145,7 +147,7 @@ namespace CSharpAssignment.Services
 
             if (model.MaxWeight != 0 && model.MaxWeight != null)
             {
-                result = result.Where(x => x.WeightInPounds >= model.MaxWeight);
+                result = result.Where(x => x.WeightInPounds <= model.MaxWeight);
             }
 
             if (!string.IsNullOrEmpty(model.Location))
@@ -157,12 +159,12 @@ namespace CSharpAssignment.Services
             {
                 result = result.Where(x => x.CrimeTypeId == model.CrimeTypeId);
             }
-            if (result.Any())
-            {
-                var list = result.ToList();
-                var thread = new Thread(delegate () { SendEmailWithPdf(list, model.EmailId); });
-                thread.Start();
-            }
+            //if (result.Any())
+            //{
+            var list = result.ToList();
+            //    var thread = new Thread(delegate () { SendEmailWithPdf(list, model.EmailId); });
+            //    thread.Start();
+            //}
             return result.Count();
         }
 
@@ -216,7 +218,7 @@ namespace CSharpAssignment.Services
                 NetworkCred.Password = password;
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
-                smtp.Port = Convert.ToInt32(port) ;
+                smtp.Port = Convert.ToInt32(port);
                 smtp.Send(mailMessage);
             }
         }
