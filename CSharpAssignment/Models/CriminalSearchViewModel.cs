@@ -17,6 +17,8 @@ namespace CSharpAssignment.Models
         /// The age.
         /// </value>
         public string Age { get; set; }
+
+        public int LocationId { get; set; }
         /// <summary>
         /// Gets or sets the crime.
         /// </summary>

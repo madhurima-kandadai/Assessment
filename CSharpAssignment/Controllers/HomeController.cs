@@ -113,7 +113,7 @@ namespace CSharpAssignment.Controllers
                 MinWeight = model.MinWeight,
                 MaxWeight = model.MaxWeight,
                 CrimeTypeId = model.Crime,
-                Location = model.Location,
+                LocationId = model.LocationId,
                 Nationality = model.Nationality,
                 EmailId = Request.RequestContext.HttpContext.User.Identity.Name
             };

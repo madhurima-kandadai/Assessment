@@ -64,6 +64,8 @@ namespace CSharpAssignment.Services.Models
         /// The location.
         /// </value>
         public string Location { get; set; }
+
+        public int LocationId { get; set; }
         /// <summary>
         /// Gets or sets the name.
         /// </summary>

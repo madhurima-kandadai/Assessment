@@ -12,6 +12,7 @@
       <xs:element minOccurs="0" name="HeightInCms" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="InPrison" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationId" type="xs:int" />
       <xs:element minOccurs="0" name="MaxHeight" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MaxWeight" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MinHeight" nillable="true" type="xs:int" />

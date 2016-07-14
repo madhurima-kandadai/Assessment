@@ -53,6 +53,9 @@ namespace CSharpAssignment.ServiceReference1 {
         private string LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LocationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MaxHeightField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -209,6 +212,19 @@ namespace CSharpAssignment.ServiceReference1 {
                 if ((object.ReferenceEquals(this.LocationField, value) != true)) {
                     this.LocationField = value;
                     this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LocationId {
+            get {
+                return this.LocationIdField;
+            }
+            set {
+                if ((this.LocationIdField.Equals(value) != true)) {
+                    this.LocationIdField = value;
+                    this.RaisePropertyChanged("LocationId");
                 }
             }
         }

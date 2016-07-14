@@ -10,7 +10,7 @@
             MinWeight: $scope.minWeight,
             MaxWeight: $scope.maxWeight,
             Nationality: $scope.nationality,
-            Location: $scope.location,
+            LocationId: $scope.location,
             Crime: $scope.crimeType
         }
         $http({
@@ -24,7 +24,10 @@
             else {
                 alert('No results are retrieved. Please try with different search criteria');
             }
-        }).error(function (response) { });
+            $scope.Reset();
+        }).error(function (response) {
+            $scope.Reset();
+        });
     };
 
     $scope.GetLocations = function () {
@@ -42,9 +45,7 @@
             url: '/home/GetCrimeTypes'
         }).success(function (response) {
             $scope.crimeTypes = response;
-            $scope.Reset();
         }).error(function (response) {
-            $scope.Reset();
         });
     };
 
