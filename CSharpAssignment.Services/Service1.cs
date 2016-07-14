@@ -53,12 +53,12 @@ namespace CSharpAssignment.Services
         public List<CrimeTypeModel> GetCrimeTypes()
         {
             var list = modelContext.CrimeTypes.AsQueryable().ToList();
-            var crimeTypeList = (from crimeType in list
-                                 select new CrimeTypeModel
-                                 {
-                                     CrimeTypeId = crimeType.Id,
-                                     CrimeTypeName = crimeType.Type
-                                 }).ToList();
+            var crimeTypeList = ( from crimeType in list
+                                  select new CrimeTypeModel
+                                  {
+                                      CrimeTypeId = crimeType.Id,
+                                      CrimeTypeName = crimeType.Type
+                                  } ).ToList();
             return crimeTypeList;
         }
 
@@ -69,12 +69,12 @@ namespace CSharpAssignment.Services
         public List<LocationModel> GetLocations()
         {
             var list = modelContext.Locations.AsQueryable().ToList();
-            var locationList = (from loc in list
-                                select new LocationModel
-                                {
-                                    LocationId = loc.Id,
-                                    LocationName = loc.Location1
-                                }).ToList();
+            var locationList = ( from loc in list
+                                 select new LocationModel
+                                 {
+                                     LocationId = loc.Id,
+                                     LocationName = loc.Location1
+                                 } ).ToList();
             return locationList;
         }
 
@@ -85,88 +85,95 @@ namespace CSharpAssignment.Services
         /// <returns></returns>
         public int GetCriminalSearchDetails(CriminalModel model)
         {
-            var criminals = modelContext.MD_Criminals.AsQueryable();
-            var crimeTypes = modelContext.CrimeTypes.AsQueryable();
-            var crimeDetails = modelContext.CrimeDetails.AsQueryable();
-            var locations = modelContext.Locations.AsQueryable();
-            var result = (from criminal in criminals
-                          join crime in crimeDetails on criminal.Id equals crime.CriminalId
-                          join crimeType in crimeTypes on crime.CrimeTypeId equals crimeType.Id
-                          join location in locations on criminal.LocationId equals location.Id
-                          select new CriminalModel
-                          {
-                              Name = criminal.Name,
-                              Age = criminal.Age,
-                              HeightInCms = criminal.Height,
-                              ConvictedOn = crime.ConvictedOn,
-                              Crime = crimeType.Type,
-                              Location = location.Location1,
-                              LocationId = location.Id,
-                              Gender = criminal.Gender,
-                              Nationality = criminal.Nationality,
-                              WeightInPounds = criminal.Weight,
-                              CrimeTypeId = crimeType.Id,
-                              InPrison = criminal.InPrison == true ? "Yes" : "No"
-                          });
-            if (!string.IsNullOrEmpty(model.Name))
+            try
             {
-                result = result.Where(x => x.Name.ToLower().Contains(model.Name.ToLower()));
-            }
+                var criminals = modelContext.MD_Criminals.AsQueryable();
+                var crimeTypes = modelContext.CrimeTypes.AsQueryable();
+                var crimeDetails = modelContext.CrimeDetails.AsQueryable();
+                var locations = modelContext.Locations.AsQueryable();
+                var result = ( from criminal in criminals
+                               join crime in crimeDetails on criminal.Id equals crime.CriminalId
+                               join crimeType in crimeTypes on crime.CrimeTypeId equals crimeType.Id
+                               join location in locations on criminal.LocationId equals location.Id
+                               select new CriminalModel
+                               {
+                                   Name = criminal.Name,
+                                   Age = criminal.Age,
+                                   HeightInCms = criminal.Height,
+                                   ConvictedOn = crime.ConvictedOn,
+                                   Crime = crimeType.Type,
+                                   Location = location.Location1,
+                                   LocationId = location.Id,
+                                   Gender = criminal.Gender,
+                                   Nationality = criminal.Nationality,
+                                   WeightInPounds = criminal.Weight,
+                                   CrimeTypeId = crimeType.Id,
+                                   InPrison = criminal.InPrison == true ? "Yes" : "No"
+                               } );
+                if (!string.IsNullOrEmpty(model.Name))
+                {
+                    result = result.Where(x => x.Name.ToLower().Contains(model.Name.ToLower()));
+                }
 
-            if (!string.IsNullOrEmpty(model.Gender))
-            {
-                result = result.Where(x => x.Gender.ToLower().Contains(model.Gender.ToLower()));
-            }
+                if (!string.IsNullOrEmpty(model.Gender))
+                {
+                    result = result.Where(x => x.Gender.ToLower() == model.Gender.ToLower());
+                }
 
-            if (!string.IsNullOrEmpty(model.Nationality))
-            {
-                result = result.Where(x => x.Nationality.ToLower().Contains(model.Nationality.ToLower()));
-            }
+                if (!string.IsNullOrEmpty(model.Nationality))
+                {
+                    result = result.Where(x => x.Nationality.ToLower().Contains(model.Nationality.ToLower()));
+                }
 
-            if (!string.IsNullOrEmpty(model.AgeRange))
-            {
-                var age = model.AgeRange.Split('-').ToList();
-                int minAge = Convert.ToInt32(age[0]);
-                int maxAge = Convert.ToInt32(age[1]);
-                result = result.Where(x => x.Age >= minAge && x.Age <= maxAge);
-            }
+                if (!string.IsNullOrEmpty(model.AgeRange))
+                {
+                    var age = model.AgeRange.Split('-').ToList();
+                    int minAge = Convert.ToInt32(age[0]);
+                    int maxAge = Convert.ToInt32(age[1]);
+                    result = result.Where(x => x.Age >= minAge && x.Age <= maxAge);
+                }
 
-            if (model.MinHeight != 0 && model.MinHeight != null)
-            {
-                result = result.Where(x => x.HeightInCms >= model.MinHeight);
-            }
+                if (model.MinHeight != 0 && model.MinHeight != null)
+                {
+                    result = result.Where(x => x.HeightInCms >= model.MinHeight);
+                }
 
-            if (model.MaxHeight != 0 && model.MaxHeight != null)
-            {
-                result = result.Where(x => x.HeightInCms <= model.MaxHeight);
-            }
+                if (model.MaxHeight != 0 && model.MaxHeight != null)
+                {
+                    result = result.Where(x => x.HeightInCms <= model.MaxHeight);
+                }
 
-            if (model.MinWeight != 0 && model.MinWeight != null)
-            {
-                result = result.Where(x => x.WeightInPounds >= model.MinWeight);
-            }
+                if (model.MinWeight != 0 && model.MinWeight != null)
+                {
+                    result = result.Where(x => x.WeightInPounds >= model.MinWeight);
+                }
 
-            if (model.MaxWeight != 0 && model.MaxWeight != null)
-            {
-                result = result.Where(x => x.WeightInPounds <= model.MaxWeight);
-            }
+                if (model.MaxWeight != 0 && model.MaxWeight != null)
+                {
+                    result = result.Where(x => x.WeightInPounds <= model.MaxWeight);
+                }
 
-            if (model.LocationId != 0)
-            {
-                result = result.Where(x => x.LocationId == model.LocationId);
-            }
+                if (model.LocationId != 0)
+                {
+                    result = result.Where(x => x.LocationId == model.LocationId);
+                }
 
-            if (model.CrimeTypeId != 0)
-            {
-                result = result.Where(x => x.CrimeTypeId == model.CrimeTypeId);
+                if (model.CrimeTypeId != 0)
+                {
+                    result = result.Where(x => x.CrimeTypeId == model.CrimeTypeId);
+                }
+                if (result.Any())
+                {
+                    var list = result.ToList();
+                    var thread = new Thread(delegate () { SendEmailWithPdf(list, model.EmailId); });
+                    thread.Start();
+                }
+                return result.Count();
             }
-            if (result.Any())
+            catch (Exception ex)
             {
-                var list = result.ToList();
-                var thread = new Thread(delegate () { SendEmailWithPdf(list, model.EmailId); });
-                thread.Start();
+                throw ex;
             }
-            return result.Count();
         }
 
         /// <summary>

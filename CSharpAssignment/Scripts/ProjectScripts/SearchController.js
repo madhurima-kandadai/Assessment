@@ -52,7 +52,7 @@
     $scope.Reset = function () {
         $scope.ageRange = '';
         $scope.searchName = '';
-        $scope.gender = '';
+        $scope.gender = 'male';
         $scope.minHeight = '';
         $scope.maxHeight = '';
         $scope.minWeight = '';

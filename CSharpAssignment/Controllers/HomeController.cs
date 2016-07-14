@@ -16,11 +16,16 @@ namespace CSharpAssignment.Controllers
         /// <summary>
         /// The client
         /// </summary>
-         Service1Client client;
+        Service1Client client;
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         public HomeController()
+        {
+           
+        }
+
+        private void StartService()
         {
             if (client == null)
             {
@@ -49,7 +54,7 @@ namespace CSharpAssignment.Controllers
                 return this.View();
             }
             else
-            {                
+            {
                 return this.RedirectToAction("Login", "Account");
             }
         }
@@ -82,6 +87,7 @@ namespace CSharpAssignment.Controllers
         /// <returns></returns>
         public ActionResult GetCrimeTypes()
         {
+            StartService();
             var list = client.GetCrimeTypes();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
@@ -92,6 +98,7 @@ namespace CSharpAssignment.Controllers
         /// <returns></returns>
         public ActionResult GetLocations()
         {
+            StartService();
             var list = client.GetLocations();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
@@ -103,6 +110,7 @@ namespace CSharpAssignment.Controllers
         /// <returns></returns>
         public ActionResult GetCriminalSearchDetails(CriminalSearchViewModel model)
         {
+            StartService();
             var serviceModel = new CriminalModel
             {
                 Name = model.Name,
@@ -117,12 +125,19 @@ namespace CSharpAssignment.Controllers
                 Nationality = model.Nationality,
                 EmailId = Request.RequestContext.HttpContext.User.Identity.Name
             };
-            var count = client.GetCriminalSearchDetails(serviceModel);
-            if (count > 0)
+            try
             {
-                return Json(true, JsonRequestBehavior.AllowGet);
+                var count = client.GetCriminalSearchDetails(serviceModel);
+                if (count > 0)
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
             }
-            return Json(false, JsonRequestBehavior.AllowGet);
+            catch
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

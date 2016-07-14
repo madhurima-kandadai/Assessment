@@ -26,7 +26,7 @@
             <tr>
                 <td align="right">Gender :</td>
                 <td colspan="3">
-                    <input style="display: inline;" type="radio" ng-model="gender" value="male" />Male
+                    <input style="display: inline;" ng-checked="true" type="radio" ng-model="gender" value="male" />Male
                     <input style="display: inline;" type="radio" ng-model="gender" value="female" />Female
                     <input style="display: inline;" type="radio" ng-model="gender" value="Others" />Others
                 </td>
@@ -34,19 +34,19 @@
             <tr>
                 <td align="right">Height Range :</td>
                 <td>
-                    <input type="text" class="form-control" ng-model="minHeight" placeholder="min" />
+                    <input type="number" class="form-control" ng-model="minHeight" placeholder="min" />
                 </td>
                 <td>
-                    <input type="text" class="form-control" ng-model="maxHeight" placeholder="max" />
+                    <input type="number" class="form-control" ng-model="maxHeight" placeholder="max" />
                 </td>
             </tr>
             <tr>
                 <td align="right">Weight Range :</td>
                 <td>
-                    <input type="text" class="form-control" ng-model="minWeight" placeholder="min" />
+                    <input type="number" class="form-control" ng-model="minWeight" placeholder="min" />
                 </td>
                 <td>
-                    <input class="form-control" type="text" ng-model="maxWeight" placeholder="max" />
+                    <input class="form-control" type="number" ng-model="maxWeight" placeholder="max" />
                 </td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><button ng-disabled="" class="btn btn-primary" ng-model="btnSearch" ng-click="searchCrime()">Search</button></td>
+                <td colspan="2" align="center"><button class="btn btn-primary" ng-model="btnSearch" ng-click="searchCrime()">Search</button></td>
             </tr>
         </table>
     </div>

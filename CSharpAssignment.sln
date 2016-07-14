@@ -9,6 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAssignment", "CSharpA
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAssignment.Tests", "CSharpAssignment.Tests\CSharpAssignment.Tests.csproj", "{AF2B1907-C0DF-4A57-9264-05D3385687D7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E2846090-092F-4716-8E46-D014B08FC59B} = {E2846090-092F-4716-8E46-D014B08FC59B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAssignment.Services", "CSharpAssignment.Services\CSharpAssignment.Services.csproj", "{E2846090-092F-4716-8E46-D014B08FC59B}"
 EndProject
